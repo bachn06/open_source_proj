@@ -54,9 +54,6 @@ const register = asyncHandle(async (req, res, next) => {
         link: process.env.CLIENT_URL + "/api/auth/confirm/" + newUser._id,
     };
     sendUesrMail(res, options, "Send active mail successfully");
-
-    // Hidden send mail
-    // sendResponse(res, "Register successfully!");
 });
 // @route [POST] /api/auth/login
 // @desc user login
