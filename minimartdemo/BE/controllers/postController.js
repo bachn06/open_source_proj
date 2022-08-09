@@ -44,6 +44,7 @@ const getPosts = asyncHandle(async (req, res, next) => {
         select: "name",
     });
 
+    // Check existing posts
     if (!posts) {
         return next(new ErrorResponse("Post not found"));
     }
@@ -80,6 +81,7 @@ const updatePostById = asyncHandle(async (req, res, next) => {
     console.log(req.body);
     pictures = JSON.parse(pictures);
 
+    // check new pictures
     if (newPictures) {
         pictures = pictures.concat(newPictures);
     }
