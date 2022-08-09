@@ -10,8 +10,10 @@ const {
 const { checkAdminPermission } = require("../middleware/checkPermission");
 const { verifyAcessToken } = require("../middleware/verifyToken");
 
+// Lay danh sach user
 router.get("/user/", verifyAcessToken, checkAdminPermission, getUsers);
 
+// Khoa tai khoan nguoi dung
 router.delete(
     "/user/delete/:id",
     verifyAcessToken,
@@ -19,6 +21,7 @@ router.delete(
     banUserById
 );
 
+// Khoa tai khoan nhieu nguoi dung
 router.delete(
     "/user/delete/",
     verifyAcessToken,
@@ -26,6 +29,7 @@ router.delete(
     banUsers
 );
 
+// Mo khoa tai khoan nguoi dung
 router.put(
     "/user/activated/:id",
     verifyAcessToken,

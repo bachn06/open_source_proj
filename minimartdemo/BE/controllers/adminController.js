@@ -21,6 +21,7 @@ const getUsers = asyncHandle(async (req, res, next) => {
 const banUserById = asyncHandle(async (req, res, next) => {
     const userId = req.params.id;
 
+    // Kiem tra user id
     if (!userId) {
         return next(new ErrorResponse("User Id not found", 404));
     }
@@ -29,6 +30,8 @@ const banUserById = asyncHandle(async (req, res, next) => {
         _id: userId,
         isActive: true,
     });
+
+    // Kiem tra tai khoan ton tai
     if (!user) {
         return next(
             new ErrorResponse("User not found or User is not active", 404)
