@@ -14,6 +14,7 @@ import {
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { userLogout } from "app/userSlice";
+import { clearCart } from "app/purchaseSlide";
 
 function Header() {
 	const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function Header() {
 
 	const logout = () => {
 		dispatch(userLogout());
+		dispatch(clearCart());
 		history.push("/");
 	};
 

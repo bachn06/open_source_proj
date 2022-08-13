@@ -124,9 +124,6 @@ const purchaseSlice = createSlice({
 			.addCase(fetchOrders.fulfilled, (state, action) => {
 				state.orders = action.payload.orders;
 			})
-			.addCase(createOrder.fulfilled, (state, action) => {
-				state.orders.push(action.payload.orders);
-			})
 			.addCase(fetchCart.fulfilled, (state, action) => {
 				const cart = action.payload.cart;
 				const { products, quantity } = cart;
@@ -186,6 +183,6 @@ const purchaseSlice = createSlice({
 	},
 });
 
-export const { updateCart } = purchaseSlice.actions;
+export const { clearCart } = purchaseSlice.actions;
 
 export default purchaseSlice.reducer;

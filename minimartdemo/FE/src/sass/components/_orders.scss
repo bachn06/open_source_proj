@@ -43,6 +43,10 @@
 		@include flex();
 		padding: 20px 0;
 
+		@include mobile {
+			display: none;
+		}
+
 		&__options {
 			width: 200px;
 			font-size: 1.4rem;
@@ -157,11 +161,22 @@
 					flex: 0 0 40%;
 					max-width: 40%;
 					padding-left: 10px;
+
+					@include mobileAndTablet {
+						flex: 0 0 50%;
+						max-width: 50%;
+					}
 				}
 
 				&__summary {
 					flex: 0 0 10%;
 					max-width: 10%;
+
+					@include mobileAndTablet {
+						flex: 0 0 15%;
+						max-width: 15%;
+						padding-left: 10px;
+					}
 				}
 
 				&__address {
@@ -171,11 +186,32 @@
 					& p {
 						padding: 0 20px;
 					}
+
+					@include mobileAndTablet {
+						display: none;
+					}
 				}
 
 				&__info {
 					flex: 0 0 20%;
 					max-width: 20%;
+
+					@include mobileAndTablet {
+						display: none;
+					}
+				}
+
+				&__detail {
+					@include pc {
+						display: none;
+					}
+
+					flex: 0 0 20%;
+					max-width: 20%;
+
+					& p {
+						line-break: anywhere;
+					}
 				}
 
 				&__status {

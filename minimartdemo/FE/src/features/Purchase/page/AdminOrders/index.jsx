@@ -239,6 +239,18 @@ function AdminOrders() {
 					<p>Họ tên: {order.name}</p>
 					<p>Email: {order.email}</p>
 				</div>
+				<div className='orders__list__body__item__detail'>
+					<p>
+						Địa chỉ:{" "}
+						{order.address +
+							", " +
+							order.district +
+							", " +
+							order.city}
+					</p>
+					<p>Họ tên: {order.name}</p>
+					<p>Email: {order.email}</p>
+				</div>
 				<div className='orders__list__body__item__status text-center'>
 					<p className={"status " + orderStatus[order.status]}>
 						{order.status}
@@ -415,6 +427,9 @@ function AdminOrders() {
 									</div>
 									<div className='orders__list__body__item__info'>
 										<p>Thông tin khách hàng</p>
+									</div>
+									<div className='orders__list__body__item__detail'>
+										<p>Thông tin đặt hàng</p>
 									</div>
 									<div className='orders__list__body__item__status text-center'>
 										<p>Trạng thái</p>

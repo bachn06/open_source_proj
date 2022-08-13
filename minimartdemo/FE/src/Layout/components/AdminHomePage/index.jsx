@@ -57,7 +57,7 @@ function AdminHomePage() {
 					<p className='admin__home__item__text'>Đã thanh toán</p>
 				</Link>
 				<Link to='/admin/orders' className='admin__home__item'>
-					<p className='admin__home__item__number'>1</p>
+					<p className='admin__home__item__number'>0</p>
 					<p className='admin__home__item__text'>Đơn hủy</p>
 				</Link>
 				<Link to='/admin/products' className='admin__home__item'>
