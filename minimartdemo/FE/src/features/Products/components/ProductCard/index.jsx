@@ -24,7 +24,9 @@ function ProductCard({ product, width }) {
 
 	return (
 		<Col
-			md={width !== "2-4" ? width : ""}
+			sm='6'
+			md='4'
+			lg={width !== "2-4" ? width : ""}
 			className={cls({
 				"product-card--wrap": true,
 				"col-2-4": width === "2-4",

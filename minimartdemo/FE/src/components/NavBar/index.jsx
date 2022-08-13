@@ -1,6 +1,8 @@
+import { userLogout } from "app/userSlice";
 import BreadCrumb from "components/BreadCrumb";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
 	Col,
 	Collapse,
@@ -15,13 +17,21 @@ import {
 } from "reactstrap";
 
 function NavBar() {
+	const dispatch = useDispatch();
+	const history = useHistory();
+	const { isLogin } = useSelector((state) => state.users);
 	const categories = useSelector((state) => state.categories);
+
+	const logout = () => {
+		dispatch(userLogout());
+		history.push("/");
+	};
 
 	return (
 		<div className='navbar--wrap'>
-			<Container>
-				<Row className='align-items-center'>
-					<Col xl='3'>
+			<Container className='p-md-0'>
+				<Row className='align-items-center g-md-0'>
+					<Col md='12' lg='3'>
 						<Navbar expand className='py-0'>
 							<NavbarToggler />
 							<Collapse navbar>
@@ -37,17 +47,67 @@ function NavBar() {
 											{categories.map((item, index) => {
 												return (
 													<DropdownItem key={index}>
-														{item.name}
+														<Link
+															className='d-block'
+															to={`/category?id=${item._id}`}>
+															{item.name}
+														</Link>
 													</DropdownItem>
 												);
 											})}
 										</DropdownMenu>
 									</UncontrolledDropdown>
 								</Nav>
+								<div className='navbar__user d-none d-md-block'>
+									<i className='fa-solid fa-user'></i>
+
+									<ul className='navbar__user__nav shadow'>
+										{isLogin ? (
+											<>
+												<li className='navbar__user__item'>
+													<Link
+														to='/user'
+														className='navbar__user__link'>
+														Tài khoản của tôi
+													</Link>
+												</li>
+												<li className='navbar__user__item'>
+													<Link
+														to='/user/orders'
+														className='navbar__user__link'>
+														Đơn mua
+													</Link>
+												</li>
+												<li
+													className='navbar__user__link'
+													onClick={logout}>
+													Đăng xuất
+												</li>
+											</>
+										) : (
+											<>
+												<li className='navbar__user__item'>
+													<Link
+														to='/user/login'
+														className='navbar__user__link'>
+														Đăng ký
+													</Link>
+												</li>
+												<li className='navbar__user__item'>
+													<Link
+														to='/user/login'
+														className='navbar__user__link'>
+														Đăng nhập
+													</Link>
+												</li>
+											</>
+										)}
+									</ul>
+								</div>
 							</Collapse>
 						</Navbar>
 					</Col>
-					<Col>
+					<Col md='12' lg='9'>
 						<BreadCrumb />
 					</Col>
 				</Row>
@@ -55,7 +115,5 @@ function NavBar() {
 		</div>
 	);
 }
-
-NavBar.propTypes = {};
 
 export default NavBar;

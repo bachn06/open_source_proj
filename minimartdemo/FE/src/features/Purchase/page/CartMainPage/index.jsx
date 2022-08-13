@@ -2,7 +2,7 @@ import { deleteMultiFromCart } from "app/purchaseSlide";
 import BuyBtn from "components/BuyBtn";
 import { images } from "constant";
 import CartPageItem from "features/Purchase/components/CartPageItem";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
@@ -11,8 +11,6 @@ function CartMainPage() {
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.purchase.cart);
 	const [checkList, setCheckList] = useState([]);
-
-	useEffect(() => {}, [dispatch]);
 
 	const handleCheck = (e) => {
 		const target = e.target;
@@ -43,9 +41,9 @@ function CartMainPage() {
 		return cart.length > 0
 			? cart
 					.reduce((prev, curr) => {
-						return checkList.includes(curr.id)
-							? prev + curr.price * curr.quantity
-							: prev;
+						const price =
+							curr.price - (curr.price * curr.discount) / 100.0;
+						return prev + price * curr.quantity;
 					}, 0)
 					.toLocaleString()
 			: 0;
@@ -65,6 +63,7 @@ function CartMainPage() {
 	};
 
 	const onDeleteMultiFromCart = () => {
+		console.log("click");
 		if (checkList.length > 0) {
 			dispatch(deleteMultiFromCart(checkList));
 			setCheckList([]);
@@ -96,7 +95,7 @@ function CartMainPage() {
 											checkList.length !== 0
 										}
 										onChange={handleCheck}
-										value={cart.map((item) => item.id)}
+										value={cart.map((item) => item._id)}
 									/>
 								</div>
 								<div className='cart-page__item__product'>
@@ -129,21 +128,18 @@ function CartMainPage() {
 											cart.length === checkList.length &&
 											checkList.length !== 0
 										}
-										value={cart.map((item) => item.id)}
+										value={cart.map((item) => item._id)}
 									/>
 								</div>
 								<div className='cart-page__item__footer-action'>
 									<label htmlFor='checkAll'>
-										Chọn tất cả ({cart.length})
+										Chọn tất cả ({checkList.length})
 									</label>
 									<p onClick={onDeleteMultiFromCart}>Xóa</p>
-									<p className='color'>
-										Lưu vào danh sách yêu thích
-									</p>
 								</div>
 								<div className='cart-page__item__summary'>
 									<p>
-										Tổng thanh toán ({checkList.length} Sản
+										Tổng thanh toán ({cart.length} Sản
 										phẩm):{" "}
 										<span>
 											<sup>đ</sup>
@@ -151,8 +147,8 @@ function CartMainPage() {
 										</span>
 									</p>
 									<BuyBtn
-										content={"Mua hàng"}
-										className={"buy-btn--mr0"}
+										className='buy-btn mt-0 w-100'
+										content='Mua hàng'
 									/>
 								</div>
 							</div>

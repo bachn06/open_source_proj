@@ -30,7 +30,7 @@ function Header() {
 	return (
 		<header className='header'>
 			<Container>
-				<div className='header__top'>
+				<div className='header__top d-none d-lg-flex'>
 					<div className='header__top__side'>
 						<p className='header__top__item header__top__item--social'>
 							<span>Kết nối</span>
@@ -71,7 +71,7 @@ function Header() {
 										</Link>
 									</li>
 									<li className='header__top__item--sub__item'>
-										<Link to='/user/purchase'>Đơn mua</Link>
+										<Link to='/user/orders'>Đơn mua</Link>
 									</li>
 									<li
 										className='header__top__item--sub__item'
@@ -98,12 +98,16 @@ function Header() {
 				</div>
 				<div className='header__middle'>
 					<Row className='align-content-center'>
-						<Col md='3' className='header__middle__logo'>
+						<Col sm='12' lg='3' className='header__middle__logo'>
 							<Link to='/'>
 								<img src={images.LOGO} alt='logo' />
 							</Link>
 						</Col>
-						<Col className='header__middle__search'>
+						<Col
+							sm='6'
+							md='9'
+							lg='7'
+							className='header__middle__search'>
 							<div className='form-wrap'>
 								<Form
 									className='header__middle__form'
@@ -127,7 +131,7 @@ function Header() {
 								</Form>
 							</div>
 						</Col>
-						<Col md='2'>
+						<Col sm='6' md='3' lg='2'>
 							<Cart />
 						</Col>
 					</Row>

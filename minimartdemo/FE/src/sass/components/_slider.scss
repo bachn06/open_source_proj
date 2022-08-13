@@ -23,6 +23,10 @@
 
 .slick-list {
 	margin-right: -15px;
+
+	& .product-card--wrap {
+		width: 100%;
+	}
 }
 
 .slick-arrow {
@@ -36,11 +40,33 @@
 		padding: 10px 5px;
 		z-index: 99;
 		border-radius: 2px;
+		background-color: white;
+		opacity: 0.5;
+		transition: 0.25s linear;
+	}
+
+	&.slick-prev:hover,
+	&.slick-next:hover {
+		opacity: 1;
 	}
 
 	&.slick-prev::before,
 	&.slick-next::before {
 		content: unset;
+	}
+
+	&.slick-prev {
+		left: 0px;
+	}
+
+	&.slick-disabled {
+		opacity: 0.5;
+	}
+
+	&.slick-next {
+		left: 100%;
+		right: unset;
+		transform: translate(-100%, -50%);
 	}
 
 	& i {
@@ -65,6 +91,13 @@
 			padding: 20px 5px;
 			z-index: 99;
 			border-radius: 2px;
+			opacity: 0.6;
+			transition: 0.25s linear;
+		}
+
+		&.slick-prev:hover,
+		&.slick-next:hover {
+			opacity: 1;
 		}
 
 		&.slick-prev::before,
@@ -74,6 +107,10 @@
 
 		&.slick-prev {
 			left: 0;
+		}
+
+		&.slick-disabled {
+			opacity: 0.6;
 		}
 
 		&.slick-next {
@@ -125,6 +162,7 @@
 }
 
 .image-slider {
+	padding: 0 20px 0 0;
 	.image-active {
 		position: relative;
 

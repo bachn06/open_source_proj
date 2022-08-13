@@ -10,7 +10,7 @@ BuyBtn.propTypes = {
 
 function BuyBtn({ content, className }) {
 	return (
-		<Link to='purchase' className='flex-grow-1'>
+		<Link to='/purchase' className='flex-grow-1'>
 			<Button className={`buy-btn shadow-none  ${className}`}>
 				{content}
 			</Button>
