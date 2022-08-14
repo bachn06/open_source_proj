@@ -132,7 +132,12 @@ function HomePage() {
 				<Row className='home__banner'>
 					{bannerImg.map((item, index) => {
 						return (
-							<Col key={index}>
+							<Col
+								xs='12'
+								sm='12'
+								md='4'
+								className='mb-3'
+								key={index}>
 								<div className='home__banner__item'>
 									<img
 										src={item}

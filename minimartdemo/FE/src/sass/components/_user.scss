@@ -138,6 +138,12 @@
 	}
 
 	&__purchase {
+		&--wrap {
+			@include mobile {
+				flex-flow: column-reverse;
+			}
+		}
+
 		&--empty {
 			border: 1px solid $border-color;
 			border-radius: 5px;

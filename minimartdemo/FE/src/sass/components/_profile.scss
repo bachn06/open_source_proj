@@ -202,6 +202,10 @@
 			margin: 0 10px;
 			word-break: break-word;
 		}
+
+		@include mobile {
+			display: none;
+		}
 	}
 
 	&__email {
@@ -213,6 +217,11 @@
 			margin: 0 10px;
 			word-break: break-word;
 		}
+
+		@include mobile {
+			flex: 0 0 30%;
+			max-width: 30%;
+		}
 	}
 
 	&__phone {
@@ -222,6 +231,10 @@
 		& p {
 			margin: 0 10px;
 			word-break: break-word;
+		}
+
+		@include mobile {
+			display: none;
 		}
 	}
 
@@ -233,6 +246,11 @@
 			margin: 0 10px;
 			word-break: break-word;
 		}
+
+		@include mobile {
+			flex: 0 0 25%;
+			max-width: 25%;
+		}
 	}
 
 	&__status {
@@ -242,6 +260,11 @@
 		& p {
 			margin: 0 10px;
 			word-break: break-word;
+		}
+
+		@include mobile {
+			flex: 0 0 25%;
+			max-width: 25%;
 		}
 	}
 

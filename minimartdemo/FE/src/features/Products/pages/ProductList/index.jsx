@@ -28,6 +28,10 @@ function ProductList() {
 		}
 	}, [dispatch, id]);
 
+	useEffect(() => {
+		setIsOpenMenu(false);
+	}, [location]);
+
 	return (
 		<Container className='product-list--wrap px-md-5'>
 			<Row>

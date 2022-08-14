@@ -2,8 +2,12 @@
 	margin-bottom: 0;
 	flex-wrap: nowrap;
 
-	@include mobileAndTablet {
+	@include tablet {
 		padding: 15px 30px;
+	}
+
+	@include mobile {
+		padding: 15px 0;
 	}
 
 	&-item {

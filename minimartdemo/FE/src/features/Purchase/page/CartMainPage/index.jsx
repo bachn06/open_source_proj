@@ -63,7 +63,6 @@ function CartMainPage() {
 	};
 
 	const onDeleteMultiFromCart = () => {
-		console.log("click");
 		if (checkList.length > 0) {
 			dispatch(deleteMultiFromCart(checkList));
 			setCheckList([]);

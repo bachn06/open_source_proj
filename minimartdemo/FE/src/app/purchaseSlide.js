@@ -32,7 +32,6 @@ export const createOrder = createAsyncThunk(
 export const changeOrderStatus = createAsyncThunk(
 	"purchase/changeOrderStatus",
 	async ({ status, orderId }) => {
-		console.log(status, orderId);
 		try {
 			const response = await purchaseApi.changeOrderStatus(
 				{ status },
@@ -177,7 +176,7 @@ const purchaseSlice = createSlice({
 				);
 
 				if (index !== -1) {
-					state.orders[index] = action.payload.order;
+					state.orders[index].status = action.payload.order.status;
 				}
 			});
 	},

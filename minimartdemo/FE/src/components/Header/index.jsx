@@ -24,8 +24,8 @@ function Header() {
 	const { name } = user;
 
 	const logout = () => {
-		dispatch(userLogout());
 		dispatch(clearCart());
+		dispatch(userLogout());
 		history.push("/");
 	};
 
@@ -100,13 +100,18 @@ function Header() {
 				</div>
 				<div className='header__middle'>
 					<Row className='align-content-center'>
-						<Col sm='12' lg='3' className='header__middle__logo'>
+						<Col
+							xs='12'
+							sm='12'
+							lg='3'
+							className='header__middle__logo'>
 							<Link to='/'>
 								<img src={images.LOGO} alt='logo' />
 							</Link>
 						</Col>
 						<Col
-							sm='6'
+							xs='12'
+							sm='12'
 							md='9'
 							lg='7'
 							className='header__middle__search'>
@@ -133,7 +138,7 @@ function Header() {
 								</Form>
 							</div>
 						</Col>
-						<Col sm='6' md='3' lg='2'>
+						<Col xs='12' sm='12' md='3' lg='2'>
 							<Cart />
 						</Col>
 					</Row>

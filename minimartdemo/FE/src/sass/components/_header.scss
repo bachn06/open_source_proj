@@ -447,6 +447,10 @@
 				border-radius: 50px;
 				transition: 0.2s ease-in;
 
+				@include mobile {
+					padding: 10px;
+				}
+
 				&:hover {
 					background-color: rgba($color: #ccc, $alpha: 0.1);
 				}

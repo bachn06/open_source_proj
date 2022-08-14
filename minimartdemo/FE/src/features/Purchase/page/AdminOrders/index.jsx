@@ -219,6 +219,11 @@ function AdminOrders() {
 							</div>
 						);
 					})}
+
+					<p className='orders__list__body__item__products__text'>
+						Tổng đơn hàng: {order.sumMoney.toLocaleString()}
+						<sup>đ</sup>
+					</p>
 				</div>
 				<div className='orders__list__body__item__summary text-center'>
 					<p>

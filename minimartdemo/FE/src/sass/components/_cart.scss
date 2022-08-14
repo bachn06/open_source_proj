@@ -6,6 +6,10 @@
 		margin-left: 0;
 	}
 
+	@include mobile {
+		margin-top: 15px;
+	}
+
 	&--empty {
 		@include flex(center, center);
 		flex-direction: column;

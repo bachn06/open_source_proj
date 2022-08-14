@@ -24,6 +24,7 @@ function ProductCard({ product, width }) {
 
 	return (
 		<Col
+			xs='6'
 			sm='6'
 			md='4'
 			lg={width !== "2-4" ? width : ""}

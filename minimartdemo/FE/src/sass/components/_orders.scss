@@ -162,9 +162,24 @@
 					max-width: 40%;
 					padding-left: 10px;
 
-					@include mobileAndTablet {
+					@include tablet {
 						flex: 0 0 50%;
 						max-width: 50%;
+					}
+
+					@include mobile {
+						flex: 0 0 70%;
+						max-width: 70%;
+					}
+
+					&__text {
+						margin-top: 20px;
+						margin-left: 3px;
+						display: none;
+
+						@include mobile {
+							display: block;
+						}
 					}
 				}
 
@@ -172,10 +187,14 @@
 					flex: 0 0 10%;
 					max-width: 10%;
 
-					@include mobileAndTablet {
+					@include tablet {
 						flex: 0 0 15%;
 						max-width: 15%;
 						padding-left: 10px;
+					}
+
+					@include mobile {
+						display: none;
 					}
 				}
 
@@ -206,8 +225,14 @@
 						display: none;
 					}
 
-					flex: 0 0 20%;
-					max-width: 20%;
+					@include tablet {
+						flex: 0 0 20%;
+						max-width: 20%;
+					}
+
+					@include mobile {
+						display: none;
+					}
 
 					& p {
 						line-break: anywhere;
@@ -219,6 +244,11 @@
 					max-width: 15%;
 					position: relative;
 					user-select: none;
+
+					@include mobile {
+						flex: 0 0 30%;
+						max-width: 30%;
+					}
 
 					& .status {
 						color: white;
@@ -263,6 +293,11 @@
 
 						background-color: white;
 						width: 350px;
+
+						@include mobile {
+							width: 200px;
+						}
+
 						padding: 20px 10px;
 						border-radius: 3px;
 
@@ -322,6 +357,10 @@
 				margin: 10px 10px 10px auto;
 				border: 1px solid $border-color;
 				border-radius: 5px;
+
+				@include mobile {
+					display: none;
+				}
 			}
 
 			&__quantity {

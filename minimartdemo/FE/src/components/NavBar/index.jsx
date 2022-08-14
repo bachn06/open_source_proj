@@ -1,3 +1,4 @@
+import { clearCart } from "app/purchaseSlide";
 import { userLogout } from "app/userSlice";
 import BreadCrumb from "components/BreadCrumb";
 import { useDispatch } from "react-redux";
@@ -23,6 +24,7 @@ function NavBar() {
 	const categories = useSelector((state) => state.categories);
 
 	const logout = () => {
+		dispatch(clearCart());
 		dispatch(userLogout());
 		history.push("/");
 	};
@@ -31,7 +33,7 @@ function NavBar() {
 		<div className='navbar--wrap'>
 			<Container className='p-md-0'>
 				<Row className='align-items-center g-md-0'>
-					<Col md='12' lg='3'>
+					<Col md='12' lg='3' className='navabr--wrap'>
 						<Navbar expand className='py-0'>
 							<NavbarToggler />
 							<Collapse navbar>
@@ -58,7 +60,7 @@ function NavBar() {
 										</DropdownMenu>
 									</UncontrolledDropdown>
 								</Nav>
-								<div className='navbar__user d-none d-md-block'>
+								<div className='navbar__user d-lg-none d-block'>
 									<i className='fa-solid fa-user'></i>
 
 									<ul className='navbar__user__nav shadow'>
@@ -88,7 +90,7 @@ function NavBar() {
 											<>
 												<li className='navbar__user__item'>
 													<Link
-														to='/user/login'
+														to='/user/register'
 														className='navbar__user__link'>
 														Đăng ký
 													</Link>
