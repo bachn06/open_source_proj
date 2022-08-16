@@ -9,59 +9,57 @@ import { useHistory } from "react-router-dom";
 import { unwrapResult } from "@reduxjs/toolkit";
 
 const schema = yup.object({
-	name: yup.string().required("Vui lòng nhập tên danh mục"),
+  name: yup.string().required("Vui lòng nhập tên danh mục"),
 });
 
 function AddCategories() {
-	const dispatch = useDispatch();
-	const history = useHistory();
-	const defaultValues = {
-		name: "",
-	};
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const defaultValues = {
+    name: "",
+  };
 
-	const onSubmit = (data) => {
-		const createCategory = async () => {
-			try {
-				const response = dispatch(createCate(data));
-				unwrapResult(response);
-				history.push("/admin/categories");
-			} catch (error) {
-				throw error.data;
-			}
-		};
+  const handleSubmit = (data) => {
+    const createCategory = async () => {
+      try {
+        const response = dispatch(createCate(data));
+        unwrapResult(response);
+        history.push("/admin/categories");
+      } catch (error) {
+        throw error.data;
+      }
+    };
 
-		toast.promise(createCategory, {
-			pending: "Đang xử lý",
-			success: "Thêm danh mục thành công",
-			error: {
-				render({ data }) {
-					return `${data.message}`;
-				},
-			},
-		});
-	};
+    toast.promise(createCategory, {
+      pending: "Đang xử lý",
+      success: "Thêm danh mục thành công",
+      error: {
+        render({ data }) {
+          return `${data.message}`;
+        },
+      },
+    });
+  };
 
-	return (
-		<Container>
-			<Row>
-				<Col className='bg-white shadow-sm p-5'>
-					<div className='add-edit__header'>
-						<h1 className='add-edit__heading'>
-							Thêm 1 danh mục mới
-						</h1>
-						<p className='add-edit__sub-heading'>
-							Vui lòng điền thông tin danh mục
-						</p>
-					</div>
-					<AddEditForm
-						schema={schema}
-						defaultValues={defaultValues}
-						onSubmit={onSubmit}
-					/>
-				</Col>
-			</Row>
-		</Container>
-	);
+  return (
+    <Container>
+      <Row>
+        <Col className="bg-white shadow-sm p-5">
+          <div className="add-edit__header">
+            <h1 className="add-edit__heading">Thêm 1 danh mục mới</h1>
+            <p className="add-edit__sub-heading">
+              Vui lòng điền thông tin danh mục
+            </p>
+          </div>
+          <AddEditForm
+            schema={schema}
+            defaultValues={defaultValues}
+            onSubmit={handleSubmit}
+          />
+        </Col>
+      </Row>
+    </Container>
+  );
 }
 
 export default AddCategories;
